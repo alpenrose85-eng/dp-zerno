@@ -55,7 +55,7 @@ def calc_k2(k1: float) -> float:
 
 
 def calc_p_from_sigma(sigma: float, k1: float, k2: float) -> float:
-    base = k2 / 1.25
+    base = k2
     ratio = sigma / base
     if ratio <= 0 or ratio >= 1:
         raise ValueError("Значение σ выходит за допустимый диапазон для расчета P.")
@@ -72,7 +72,7 @@ def calc_p_from_user_input(temperature_c: float, tau_hours: float) -> float:
 
 
 def calc_sigma_from_p(p_value: float, k1: float, k2: float) -> float:
-    return (k2 / 1.25) * math.exp(-k1 * p_value)
+    return k2 * math.exp(-k1 * p_value)
 
 
 def fit_linear(x: np.ndarray, y: np.ndarray) -> FitResult:
